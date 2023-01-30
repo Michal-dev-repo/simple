@@ -1,24 +1,39 @@
-<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-    </plugin-info>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="simple"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="simple-resources" name="simple Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="simple.css" location="/css/simple.css"/>
-        <resource type="download" name="simple.js" location="/js/simple.js"/>
-        <resource type="download" name="images/" location="/images"/>
-
-        <context>simple</context>
-    </web-resource>
-    
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="simple"/>  
+  <!-- add our web resources -->  
+  <web-resource key="simple-resources" name="simple Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="simple.css" location="/css/simple.css"/>  
+    <resource type="download" name="simple.js" location="/js/simple.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>simple</context> 
+  </web-resource>  
+  <webwork1 key="simple-admin-webwork-module" name="Simple Admin Webwork Module" i18n-name-key="simple-admin-webwork-module.name" roles-required="admin"> 
+    <description key="simple-admin-webwork-module.description">The Simple Admin Webwork Module Plugin</description>  
+    <actions> 
+      <action name="pl.hobly.jira.webwork.SimpleAdminWebworkModuleAction" alias="SimpleAdminWebworkModuleAction"> 
+        <view name="admin-success">/templates/simple-admin-webwork-module/admin-success.vm</view> 
+      </action> 
+    </actions> 
+  </webwork1>  
+  <web-section key="admin_section" name="admin_section" location="admin_plugins_menu" weight="20" i18n-name-key="simple.admin.page.web.section.name"> 
+    <label key="simple.admin.page.web.section.name"/> 
+  </web-section>  
+  <web-item key="admin_webitem" name="admin_webitem" section="admin_plugins_menu/admin_section" weight="15" i18n-name-key="simple.admin.page.web.item.name"> 
+    <label key="simple.admin.page.web.item.name"/>  
+    <link linkId="admin_webitem_link">/secure/SimpleAdminWebworkModuleAction.jspa</link> 
+  </web-item>  
+  <rest name="User Search Resource" i18n-name-key="user-search-resource.name" key="user-search-resource" path="/simple" version="1.0"> 
+    <description key="user-search-resource.description">The User Search Resource Plugin</description> 
+  </rest>
 </atlassian-plugin>

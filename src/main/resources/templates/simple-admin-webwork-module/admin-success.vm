@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>$i18n.getText("simple.admin.page.title")</title>
+    <meta name="decorator" content="atl.admin">
+</head>
+<body>
+<h1>$i18n.getText("simple.admin.page.headline")</h1>
+
+<p>Now it looks nice :)</p>
+</body>
+</html>
